@@ -1,5 +1,7 @@
 <h1>Recipes</h1>
-
+<% if user_signed_in? %>
+  <p><%= link_to 'Add new recipe', new_recipe_path %><p>
+<% end %>
 <% @recipes.each do |recipe| %>
   <div>
     <h2><%= recipe.name %></h2>
