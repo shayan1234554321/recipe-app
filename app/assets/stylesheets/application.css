@@ -183,7 +183,7 @@ body {
 .recipes-container h2 {
   margin: 0;
   padding: 10px;
-  justify-self: center
+  justify-self: center;
 }
 
 .recipes-container p {
@@ -209,3 +209,38 @@ body {
   margin: 0 10px 0 10px;
 }
 
+.new-recipe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-recipe-field > .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-recipe-container input[type="number"],
+.new-recipe-container input[type="text"],
+textarea {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.new-recipe-container input[type="submit"] {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 10px;
+  left: 74px;
+  position: relative;
+  margin-top: 15px;
+}

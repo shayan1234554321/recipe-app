@@ -1,35 +1,39 @@
-<h1>New Recipe</h1>
 
-<%= form_with(model: @recipe, url: recipes_path) do |form| %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="new-recipe-container" >
+    <h1>New Recipe</h1>
+    <%= form_with(model: @recipe, url: recipes_path) do |form| %>
+      <div class="new-recipe-field">
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :preparation_time %>
+          <%= form.number_field :preparation_time %>
+          <%= form.label :preparation_time, '(hrs)' %>
+        </div>
+
+        <div class="field">
+          <%= form.label :cooking_time %>
+          <%= form.number_field :cooking_time %>
+          <%= form.label :cooking_time, '(hrs)' %>
+        </div>
+
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description %>
+        </div>
+
+        <div class="field">
+          <%= form.label :public %>
+          <%= form.check_box :public %>
+        </div>
+
+      <div class="actions">
+        <%= form.submit 'Create Recipe' %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :preparation_time %>
-    <%= form.number_field :preparation_time %>
-    <%= form.label :preparation_time, '(hrs)' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cooking_time %>
-    <%= form.number_field :cooking_time %>
-    <%= form.label :cooking_time, '(hrs)' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :public %>
-    <%= form.check_box :public %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Create Recipe' %>
-  </div>
-<% end %>
 
