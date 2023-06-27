@@ -1,2 +1,14 @@
-<h1>recipes indxe</h1>
-<p>Find me in app/views/pages/foods.html.erb</p>
+<h1>Recipes</h1>
+
+<% @recipes.each do |recipe| %>
+  <div>
+    <h2><%= recipe.name %></h2>
+    <p><%= recipe.description %></p>
+    <p><%= link_to 'Details', recipe_details_path(recipe) %></p>
+    <% if recipe.user == current_user %>
+      <%= button_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
+    <% end %>
+    <hr>
+  </div>
+<% end %>
+
