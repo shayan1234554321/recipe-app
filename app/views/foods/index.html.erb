@@ -1,2 +1,27 @@
-<h1>Pages#foods</h1>
-<p>Find me in app/views/pages/foods.html.erb</p>
+<div class="foods" >
+    <button>Add food</button>
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Measurment Unit</th>
+            <th>Unit Price</th>
+            <th>Actions</th>
+        </tr>
+        <% @foods.each_with_index do | food , index | %>
+            <tr>
+                <td>
+                    <%= food.name %>
+                </td>
+                <td>
+                    <%= food.measurement_unit %>
+                </td>
+                <td>
+                    <%= food.price %>
+                </td>
+                <td>
+                    <%= link_to "delete" %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+</div>
