@@ -43,7 +43,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 120px );
+  height: calc(100vh - 120px);
   flex-direction: column;
 }
 
@@ -51,11 +51,12 @@ body {
   width: max-content;
 }
 
-.signinContainer > h2{
+.signinContainer > h2 {
   text-transform: uppercase;
 }
 
-.signinContainer input[type="password"] , .signinContainer input[type="email"]{
+.signinContainer input[type="password"],
+.signinContainer input[type="email"] {
   background-color: black;
   color: white;
   padding: 5px;
@@ -63,7 +64,7 @@ body {
   border-radius: 8px;
 }
 
-.signinContainer input[type="submit"]{
+.signinContainer input[type="submit"] {
   background-color: black;
   color: white;
   padding: 10px;
@@ -82,14 +83,15 @@ body {
   width: 100%;
 }
 
-.foods td,.foods th {
-  border: 1px solid #dddddd;
+.foods td,
+.foods th {
+  border: 1px solid #ddd;
   text-align: left;
   padding: 8px;
 }
 
 .foods tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #ddd;
 }
 
 .foods > button {
@@ -101,9 +103,11 @@ body {
   font-size: 20px;
   transition: 0.3s ease-in-out;
 }
+
 .foods > button:hover {
   transform: translateY(-5px) scale(1);
 }
+
 .foods > button:active {
   transform: translateY(-5px) scale(0.8);
 }
