@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'public_recipes#index'
 
-  resources :foods, only: [:index]
+  resources :foods, except: [:update], as: 'foods'
   
-  resources :recipes, except: [:edit, :update] do
+  resources :recipes, except: [:update], as: 'recipes' do
     member do
       patch 'toggle'
     end
