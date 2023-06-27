@@ -1,27 +1,13 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -50,4 +36,37 @@ body {
 .navbar ul li a:hover {
   color: #000;
   font-weight: bold;
+}
+
+.signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 120px );
+  flex-direction: column;
+}
+
+.signinContainer {
+  width: max-content;
+}
+
+.signinContainer > h2{
+  text-transform: uppercase;
+}
+
+.signinContainer input[type="password"] , .signinContainer input[type="email"]{
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.signinContainer input[type="submit"]{
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 8px;
 }
