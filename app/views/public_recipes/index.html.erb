@@ -1,2 +1,33 @@
-<h1>PublicRecipes#index</h1>
-<p>Find me in app/views/public_recipes/index.html.erb</p>
+<h1>
+    Public Recipes
+</h1>
+<% if @recipes.present? %>
+    <% @recipes.each do | recipe | %>
+        <div class="recipeContainer">  
+            <div class="recipeLeft">
+                <h2>
+                    <%= recipe.name %>
+                </h2>
+                <h4>
+                    <%= recipe.user.name %>
+                </h4>
+            </div>
+            <div class="recipeRight">
+                <h4>
+                    Total food items: <%= recipe.foods.length %>
+                </h4>
+                <% if recipe.foods.length > 0 %>
+                    <h4>
+                        Total price: <%= recipe.foods.sum { |food| food.price * food.quantity } %>
+                    </h4>
+                <% else %>
+                    <h4>
+                        Total price: Nil
+                    </h4>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+    No Public recipes
+<% end %>

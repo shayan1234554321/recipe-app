@@ -111,3 +111,49 @@ body {
 .foods > button:active {
   transform: translateY(-5px) scale(0.8);
 }
+
+.formContainer {
+  display: none;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.formContainer > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer > form h2 {
+  margin: 0;
+}
+
+.formContainer > form input[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.formContainer > form input[type="text"] {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+.cancel {
+  transform: rotateZ(45deg);
+  width: max-content;
+  font-size: 30px;
+  cursor: pointer;
+}
