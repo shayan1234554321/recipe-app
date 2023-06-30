@@ -1,16 +1,19 @@
-<h1>Recipes</h1>
-<% if user_signed_in? %>
-  <p><%= link_to 'Add new recipe', new_recipe_path %><p>
-<% end %>
-<% @recipes.each do |recipe| %>
-  <div>
-    <h2><%= recipe.name %></h2>
-    <p><%= recipe.description %></p>
-    <p><%= link_to 'Details', recipe_path(recipe) %></p>
-    <% if recipe.user == current_user %>
-      <%= button_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
-    <% end %>
-    <hr>
-  </div>
-<% end %>
+<div class="recipes" >
+  <h1>Recipes</h1>
+  <% if user_signed_in? %>
+    <p><%= link_to 'Add new recipe', new_recipe_path, class: "new-recipe" %><p>
+  <% end %>
+  <% @recipes.each do |recipe| %>
+    <div class="recipes-container">
+      <h2><%= recipe.name %></h2>
+      <p><%= recipe.description %></p>
+      <div class="recipes-btn">
+        <p><%= link_to 'Details', recipe_path(recipe), class: "recipe-detail" %></p>
+        <% if recipe.user == current_user %>
+          <%= button_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }, class: "recipe-delete" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
