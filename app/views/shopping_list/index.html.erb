@@ -1,14 +1,8 @@
 <div class="shoppingContainer" >
     <h1>Shopping List</h1>
-    <% if @foods.present?%>
-    
-        <% if @foods.length > 0 %>
+    <% if  @foods.length > 0 %>
             <h3>Amount of food items to buy: <%= @foods.count %></h3>
-            <h1>Total value of food needed: <%= @foods.sum { |food| food.price * food.quantity } %> </h1>
-        <% else %>
-            <h3>Amount of food items to buy: No items yet</h3>
-            <h1>Total value of food needed: No items yet </h1>
-        <% end %>
+            <h1>Total value of food needed: <%= (@foods.inject(0) { |sum , food| sum += food.price * food.quantity }).round(2) %> </h1>
         <table>
             <tr>
                 <th>
@@ -30,7 +24,7 @@
                         <%= food.quantity %>
                     </td>
                     <td>
-                        <%= food.price * food.quantity %>
+                        <%= (food.price * food.quantity).round(2) %>
                     </td>
                 </tr>
             <% end %>

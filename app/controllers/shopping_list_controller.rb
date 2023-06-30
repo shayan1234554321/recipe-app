@@ -1,5 +1,5 @@
 class ShoppingListController < ApplicationController
   def index
-    @foods = session[:foods]
+    @foods = CartItem.all
   end
 end
