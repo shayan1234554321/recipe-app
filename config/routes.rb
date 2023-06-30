@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :recipes, except: [:update], as: 'recipes' do
     member do
       patch 'toggle'
+      post 'add_ingredient'
+      delete 'remove_ingredient/:food_id', action: :remove_ingredient, as: 'remove_ingredient'
+      get 'edit_ingredient/:food_id', to: 'recipe_foods#edit_ingredient', as: 'edit_ingredient'
+      patch 'update_ingredient/:food_id', to: 'recipe_foods#update_ingredient', as: 'update_ingredient'
     end
   end
 

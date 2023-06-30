@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.includes(:foods, :user).find(params[:id])
     @foods = @recipe.foods
+    @recipe_food = RecipeFood.new
   end
 
   def new
@@ -39,13 +40,44 @@ class RecipesController < ApplicationController
     end
   end
 
+  def add_ingredient
+    @recipe = Recipe.find(params[:id])
+    food_id = recipe_food_params[:food_id]
+    if @recipe.recipe_foods.exists?(food_id:)
+      redirect_to @recipe, alert: 'Ingredient already exists in the recipe.'
+    else
+      @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
+
+      if @recipe_food.save
+        redirect_to @recipe, notice: 'Ingredient added successfully.'
+      else
+        @foods = @recipe.foods
+        render 'recipes/show'
+      end
+    end
+  end
+
+  def remove_ingredient
+    @recipe = Recipe.find(params[:id])
+    @food = Food.find(params[:food_id])
+    @recipe_food = @recipe.recipe_foods.find_by(food_id: @food.id)
+
+    if @recipe_food.destroy
+      redirect_to @recipe, notice: 'Ingredient removed successfully.'
+    else
+      redirect_to @recipe, alert: 'Failed to remove ingredient.'
+    end
+  end
+
   private
+
+  def recipe_food_params
+    params.require(:recipe_food).permit(:food_id, :quantity)
+  end
 
   def recipe_details_params
     params.require(:recipe).permit(:public)
   end
-
-  private
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)

@@ -114,7 +114,11 @@ body {
 .foods {
   display: flex;
   flex-direction: column;
-  align-items: end;
+}
+
+.add-btn {
+  position: relative;
+  align-self: end;
 }
 
 .foods > table {
@@ -178,6 +182,19 @@ body {
   justify-self: center;
 }
 
+.recipesButton {
+  max-width: 170px;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+
 .formContainer > form h2 {
   margin: 0;
 }
@@ -195,6 +212,16 @@ body {
 }
 
 .formContainer > form input[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.toggle-public > input {
   background-color: black;
   color: white;
   padding: 10px;
@@ -295,9 +322,11 @@ textarea {
   grid-gap: 20px;
   border: 1px solid black;
   border-radius: 10px;
-  width: 75vw;
+  width: 90vw;
   margin-bottom: 25px;
   padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
 .recipes-container p {

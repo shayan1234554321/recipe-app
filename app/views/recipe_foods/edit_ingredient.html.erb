@@ -1,0 +1,9 @@
+<h1>Edit Ingredient Quantity</h1>
+
+<%= form_with(model: @recipe_food, url: update_ingredient_recipe_path(@recipe, @food), method: :patch, local: true) do |form| %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity, min: 0, step: 1 %>
+  <%= form.submit "Update" %>
+<% end %>
+
+<%= link_to 'Back to Recipe', @recipe %>

@@ -1,52 +1,76 @@
-<h1><%= @recipe.name %></h1>
+<div class="recipes-container">
+  <h1><%= @recipe.name %></h1>
 
-<% if @recipe.public? || @recipe.user == current_user %>
-  <!-- Display recipe details -->
-  <p>Description: <%= @recipe.description %></p>
-  <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
-  <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+  <% if @recipe.public? || @recipe.user == current_user %>
+    <!-- Display recipe details -->
+    <div class="recipe-details">
+      <p>Description: <%= @recipe.description %></p>
+      <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+      <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+    </div>
 
-  <!-- Toggle public/private button -->
-  <% if @recipe.user == current_user %>
-    <%= form_with(model: @recipe, url: update_details_path(@recipe)) do |form| %>
-      <%= form.check_box :public %>
-      <%= form.label :public, 'Make Public' %>
-      <%= form.submit 'Save' %>
+    <!-- Toggle public/private button -->
+    <% if @recipe.user == current_user %>
+      <%= form_with(model: @recipe, url: update_details_path(@recipe)) do |form| %>
+        <div class="toggle-public">
+          <%= form.check_box :public %>
+          <%= form.label :public, 'Make Public' %>
+          <%= form.submit 'Save' %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+    <button onclick="toggleForm()" class="recipesButton">Add food</button>
+    <% if @recipe.user == current_user %>
+      <%= button_to 'Generate Shopping List', generate_shopping_list_path(recipe_id: @recipe.id), method: :post, class: 'recipesButton' %>
+    <% end %>
 
-  <% if @recipe.user == current_user %>
-    <%= button_to 'Generate Shopping List', generate_shopping_list_path(recipe_id: @recipe.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
+    <div class="formContainer" id="formContainer" >
+      <%= form_with(model: @recipe_food, url: add_ingredient_recipe_path(@recipe), method: :post, local: true) do |form| %>
+        <%= form.hidden_field :recipe_id, value: @recipe.id %>
+        <%= form.label :food_id, 'Add Ingredient' %>
+        <%= form.collection_select :food_id, Food.all, :id, :name %>
+        <%= form.label :quantity %>
+        <%= form.number_field :quantity, min: 0, step: 1 %>
+        <%= form.submit "Add" %>
+      <% end %>
+    </div>
 
-  <!-- Display foods for the recipe -->
-  <h2>Foods</h2>
-  <table>
+    <div class="foods">
+      <h2>Ingredients</h2>
+      <table>
         <tr>
-            <th>Food</th>
-            <th>Measurment Unit</th>
-            <th>Unit Price</th>
-            <th>Actions</th>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Actions</th>
         </tr>
-        <% @foods.each_with_index do | food , index | %>
-            <tr>
-                <td>
-                    <%= food.name %>
-                </td>
-                <td>
-                    <%= food.measurement_unit %>
-                </td>
-                <td>
-                    <%= food.price %>
-                </td>
-                <td>
-                    <%= form_with model: food, url: food_path(food.id), method: :delete, data: { confirm: "Are you sure?" } do |f| %>
-                        <%= f.submit "Delete" %>
-                    <% end %>
-                </td>
-            </tr>
+        <% @foods.each_with_index do |food, index| %>
+          <tr>
+            <td><%= food.name %></td>
+            <td><%= @recipe.recipe_foods.find_by(food_id: food.id).quantity %></td>
+            <td><%= food.price %></td>
+            <td>
+              <%= button_to 'Edit', edit_ingredient_recipe_path(@recipe, food), method: :get, class: 'recipesButton' %>
+              <%= button_to 'Remove', remove_ingredient_recipe_path(@recipe, food), method: :delete, data: { confirm: "Are you sure?" }, class: 'recipesButton' %>
+            </td>
+          </tr>
         <% end %>
-    </table>
-<% else %>
-  <p>You don't have access to this recipe.</p>
-<% end %>
+      </table>
+    </div>
+
+  <% else %>
+    <p>You don't have access to this recipe.</p>
+  <% end %>
+</div>
+
+
+<script>
+    function toggleForm(){
+        const formContainer = document.getElementById("formContainer");
+        if (formContainer.style.display === "block") {
+            formContainer.style.display = "none"
+        }else{
+            formContainer.style.display = "block"
+        }
+    }
+</script>
