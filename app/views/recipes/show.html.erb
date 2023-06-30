@@ -1,2 +1,52 @@
-<h1>recipes show</h1>
-<p>Find me in app/views/pages/foods.html.erb</p>
+<h1><%= @recipe.name %></h1>
+
+<% if @recipe.public? || @recipe.user == current_user %>
+  <!-- Display recipe details -->
+  <p>Description: <%= @recipe.description %></p>
+  <p>Preparation Time: <%= @recipe.preparation_time %> minutes</p>
+  <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
+
+  <!-- Toggle public/private button -->
+  <% if @recipe.user == current_user %>
+    <%= form_with(model: @recipe, url: update_details_path(@recipe)) do |form| %>
+      <%= form.check_box :public %>
+      <%= form.label :public, 'Make Public' %>
+      <%= form.submit 'Save' %>
+    <% end %>
+  <% end %>
+
+  <% if @recipe.user == current_user %>
+    <%= button_to 'Generate Shopping List', generate_shopping_list_path(recipe_id: @recipe.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+
+  <!-- Display foods for the recipe -->
+  <h2>Foods</h2>
+  <table>
+        <tr>
+            <th>Food</th>
+            <th>Measurment Unit</th>
+            <th>Unit Price</th>
+            <th>Actions</th>
+        </tr>
+        <% @foods.each_with_index do | food , index | %>
+            <tr>
+                <td>
+                    <%= food.name %>
+                </td>
+                <td>
+                    <%= food.measurement_unit %>
+                </td>
+                <td>
+                    <%= food.price %>
+                </td>
+                <td>
+                    <%= form_with model: food, url: food_path(food.id), method: :delete, data: { confirm: "Are you sure?" } do |f| %>
+                        <%= f.submit "Delete" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+<% else %>
+  <p>You don't have access to this recipe.</p>
+<% end %>

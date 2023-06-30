@@ -30,6 +30,21 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def update_details
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_details_params)
+      redirect_to @recipe, notice: 'Recipe details updated successfully.'
+    else
+      render :show
+    end
+  end
+
+  private
+
+  def recipe_details_params
+    params.require(:recipe).permit(:public)
+  end
+
   private
 
   def recipe_params
