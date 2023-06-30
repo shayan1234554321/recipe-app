@@ -129,6 +129,10 @@ body {
   flex-direction: column;
 }
 
+.recipeLeft h2 {
+  text-transform: capitalize;
+}
+
 .formContainer > form h2 {
   margin: 0;
 }
@@ -174,10 +178,6 @@ body {
   cursor: pointer;
   max-width: 500px;
   margin-bottom: 10px;
-}
-
-.recipeLeft h2 {
-  text-transform: capitalize;
 }
 
 .shoppingContainer table {
