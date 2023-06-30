@@ -1,3 +1,5 @@
 class ShoppingListController < ApplicationController
-  def index; end
+  def index
+    @foods = CartItem.all
+  end
 end

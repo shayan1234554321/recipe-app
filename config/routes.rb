@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'public_recipes#index'
 
-  resources :foods, except: [:update], as: 'foods'
+  resources :foods
   
   resources :recipes, except: [:update], as: 'recipes' do
     member do

@@ -1,2 +1,36 @@
-<h1>ShoppingList#index</h1>
-<p>Find me in app/views/shopping_list/index.html.erb</p>
+<div class="shoppingContainer" >
+    <h1>Shopping List</h1>
+    <% if  @foods.length > 0 %>
+            <h3>Amount of food items to buy: <%= @foods.count %></h3>
+            <h1>Total value of food needed: <%= (@foods.inject(0) { |sum , food| sum += food.price * food.quantity }).round(2) %> </h1>
+        <table>
+            <tr>
+                <th>
+                    Food
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+            <% @foods.each do | food | %>
+                <tr>
+                    <td>
+                        <%= food.name %>
+                    </td>
+                    <td>
+                        <%= food.quantity %>
+                    </td>
+                    <td>
+                        <%= (food.price * food.quantity).round(2) %>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+    <% else %>
+        <h1>No Items in the cart</h1>
+    <% end %>
+</div>
+

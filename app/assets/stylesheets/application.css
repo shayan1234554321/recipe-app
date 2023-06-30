@@ -151,6 +151,126 @@ body {
   transform: translateY(-5px) scale(0.8);
 }
 
+.formContainer {
+  display: none;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.formContainer > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipeLeft h2 {
+  text-transform: capitalize;
+}
+
+.recipes-container h2 {
+  margin: 0;
+  padding: 10px;
+  justify-self: center;
+}
+
+.formContainer > form h2 {
+  margin: 0;
+}
+
+.new-recipe-container input[type="submit"] {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 10px;
+  left: 74px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.formContainer > form input[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.new-recipe-container input[type="number"],
+.new-recipe-container input[type="text"],
+textarea {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.formContainer > form input[type="text"] {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+.cancel {
+  transform: rotateZ(45deg);
+  width: max-content;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.publicRecipes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.recipeContainer {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 90%;
+  cursor: pointer;
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.shoppingContainer table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+.shoppingContainer td,
+.shoppingContainer th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.shoppingContainer tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.shoppingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .recipes {
   display: flex;
   flex-direction: column;
@@ -178,12 +298,6 @@ body {
   width: 75vw;
   margin-bottom: 25px;
   padding: 20px;
-}
-
-.recipes-container h2 {
-  margin: 0;
-  padding: 10px;
-  justify-self: center;
 }
 
 .recipes-container p {
@@ -220,27 +334,4 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.new-recipe-container input[type="number"],
-.new-recipe-container input[type="text"],
-textarea {
-  background-color: black;
-  color: white;
-  padding: 5px;
-  font-size: 20px;
-  border-radius: 8px;
-  margin-bottom: 5px;
-}
-
-.new-recipe-container input[type="submit"] {
-  background-color: black;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  padding: 10px;
-  left: 74px;
-  position: relative;
-  margin-top: 15px;
 }
