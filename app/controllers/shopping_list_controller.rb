@@ -1,6 +1,8 @@
 class ShoppingListController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @foods = CartItem.all
+    @foods = CartItem.where(user: current_user)
   end
 
   def generate
@@ -12,7 +14,8 @@ class ShoppingListController < ApplicationController
         measurement_unit: food.measurement_unit,
         price: food.price,
         quantity: recipe_food.quantity,
-        recipe: @recipe
+        recipe: @recipe,
+        user: current_user
       )
     end
 
