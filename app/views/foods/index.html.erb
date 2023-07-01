@@ -1,0 +1,55 @@
+<div class="foods" >
+    <button onclick="toggleForm()" class="add-btn">Add food</button>
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Measurment Unit</th>
+            <th>Unit Price</th>
+            <th>Actions</th>
+        </tr>
+        <% @foods.each_with_index do | food , index | %>
+            <tr>
+                <td>
+                    <%= food.name %>
+                </td>
+                <td>
+                    <%= food.measurement_unit %>
+                </td>
+                <td>
+                    <%= food.price %>
+                </td>
+                <td>
+                    <%= form_with model: food, url: food_path(food.id), method: :delete, data: { confirm: "Are you sure?" } do |f| %>
+                        <%= f.submit "Delete" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    <div class="formContainer" id="formContainer" >
+        <div class="cancel" onclick="toggleForm()" >+</div>
+        <%= form_with model: Food, url: foods_path(user_id: current_user.id), method: :post do |form| %>
+            <h2>Add a Food</h2>
+            <%= form.label :name, 'Name: ' %>
+            <%= form.text_field :name %>
+            <%= form.label :measurement_unit, 'Measurement Unit: ' %>
+            <%= form.text_field :measurement_unit %>
+            <%= form.label :price, 'Price: ' %>
+            <%= form.text_field :price %>
+            <%= form.label :quantity, 'Quantity: ' %>
+            <%= form.text_field :quantity %>
+            <%= form.submit "Add Food" %>
+        <% end %>
+    </div>
+</div>
+
+<script>
+    function toggleForm(){
+        const formContainer = document.getElementById("formContainer");
+        if (formContainer.style.display === "block") {
+            formContainer.style.display = "none"
+        }else{
+            formContainer.style.display = "block"
+        }
+    }
+</script>

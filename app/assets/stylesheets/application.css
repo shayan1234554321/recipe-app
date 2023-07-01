@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.navbar ul li a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+.signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 120px);
+  flex-direction: column;
+}
+
+.signinContainer {
+  width: max-content;
+}
+
+.signinContainer > h2 {
+  text-transform: uppercase;
+}
+
+.signinContainer input[type="password"],
+.signinContainer input[type="email"],
+.signinContainer input[type="text"],
+.signinContainer input[type="password_confirmation"] {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.signinContainer input[type="submit"],
+.devise-link {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.passwordContainer {
+  width: max-content;
+}
+
+.passwordContainer input[type="email"] {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.passwordContainer input[type="submit"] {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.devise-shared {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  top: 15px;
+}
+
+.devise-shared:hover {
+  text-decoration: underline;
+}
+
+.foods {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-btn {
+  position: relative;
+  align-self: end;
+}
+
+.foods > table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.foods td,
+.foods th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.foods tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.foods > button {
+  cursor: pointer;
+  width: max-content;
+  margin-bottom: 20px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.foods > button:hover {
+  transform: translateY(-5px) scale(1);
+}
+
+.foods > button:active {
+  transform: translateY(-5px) scale(0.8);
+}
+
+.formContainer {
+  display: none;
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.formContainer > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipeLeft h2 {
+  text-transform: capitalize;
+}
+
+.recipes-container h2 {
+  margin: 0;
+  padding: 10px;
+  justify-self: center;
+}
+
+.recipesButton {
+  max-width: 170px;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+
+.formContainer > form h2 {
+  margin: 0;
+}
+
+.new-recipe-container input[type="submit"] {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 10px;
+  left: 74px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.formContainer > form input[type="submit"] {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.toggle-public > input {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.new-recipe-container input[type="number"],
+.new-recipe-container input[type="text"],
+textarea {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.formContainer > form input[type="text"] {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+.cancel {
+  transform: rotateZ(45deg);
+  width: max-content;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.publicRecipes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.recipeContainer {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 90%;
+  cursor: pointer;
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.shoppingContainer table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+.shoppingContainer td,
+.shoppingContainer th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.shoppingContainer tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.shoppingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-recipe {
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.recipes-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 90vw;
+  margin-bottom: 25px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipes-container p {
+  margin: 0;
+  padding: 10px;
+}
+
+.recipes-btn {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-detail,
+.recipe-delete {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+
+.new-recipe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-recipe-field > .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

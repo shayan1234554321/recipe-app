@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe App</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Food List', foods_path %></li>
+      <li><%= link_to 'Recipes List', recipes_path %></li>
+      <li><%= link_to 'General Shopping List', shopping_list_path %></li>
+      <li><%= link_to 'Public Recipes', public_recipes_path %></li>
+      <% if user_signed_in? %>
+        <li><%= button_to "Log Out", destroy_user_session_path, method: :delete, class: 'log-out-button' %></li>
+      <% else %>
+        <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div>
+</body>
+</html>
+
