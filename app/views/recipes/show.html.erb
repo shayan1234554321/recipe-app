@@ -19,7 +19,9 @@
         </div>
       <% end %>
     <% end %>
-    <button onclick="toggleForm()" class="recipesButton">Add food</button>
+    <% if user_signed_in? && @recipe.user == current_user %>
+      <button onclick="toggleForm()" class="recipesButton">Add food</button>
+    <% end %>
     <% if @recipe.user == current_user %>
       <%= button_to 'Generate Shopping List', generate_shopping_list_path(recipe_id: @recipe.id), method: :post, class: 'recipesButton' %>
     <% end %>
@@ -42,17 +44,21 @@
           <th>Food</th>
           <th>Quantity</th>
           <th>Value</th>
-          <th>Actions</th>
+          <% if user_signed_in? && @recipe.user == current_user %>
+            <th>Actions</th>
+          <% end %>
         </tr>
         <% @foods.each_with_index do |food, index| %>
           <tr>
             <td><%= food.name %></td>
             <td><%= @recipe.recipe_foods.find_by(food_id: food.id).quantity %></td>
             <td><%= food.price %></td>
-            <td>
-              <%= button_to 'Edit', edit_ingredient_recipe_path(@recipe, food), method: :get, class: 'recipesButton' %>
-              <%= button_to 'Remove', remove_ingredient_recipe_path(@recipe, food), method: :delete, data: { confirm: "Are you sure?" }, class: 'recipesButton' %>
-            </td>
+            <% if user_signed_in? && @recipe.user == current_user %>
+              <td>
+                <%= button_to 'Edit', edit_ingredient_recipe_path(@recipe, food), method: :get, class: 'recipesButton' %>
+                <%= button_to 'Remove', remove_ingredient_recipe_path(@recipe, food), method: :delete, data: { confirm: "Are you sure?" }, class: 'recipesButton' %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </table>
