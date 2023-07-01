@@ -22,9 +22,7 @@
     <% if user_signed_in? && @recipe.user == current_user %>
       <button onclick="toggleForm()" class="recipesButton">Add food</button>
     <% end %>
-    <% if @recipe.user == current_user %>
       <%= button_to 'Generate Shopping List', generate_shopping_list_path(recipe_id: @recipe.id), method: :post, class: 'recipesButton' %>
-    <% end %>
 
     <div class="formContainer" id="formContainer" >
       <%= form_with(model: @recipe_food, url: add_ingredient_recipe_path(@recipe), method: :post, local: true) do |form| %>
