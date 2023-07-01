@@ -31,10 +31,10 @@ class RecipesController < ApplicationController
       CartItem.where(recipe_id: @recipe.id).destroy_all
       RecipeFood.where(recipe_id: @recipe.id).destroy_all
       @recipe.destroy
-  
+
       redirect_to recipes_path
     else
-      redirect_to recipes_path, alert: "You are not authorized to delete this recipe."
+      redirect_to recipes_path, alert: 'You are not authorized to delete this recipe.'
     end
   end
 
