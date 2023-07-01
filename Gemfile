@@ -72,5 +72,5 @@ group :test do
 end
 
 gem 'devise'
-
+gem 'rspec-rails'
 gem 'rubocop', '>= 1.0', '< 2.0'
