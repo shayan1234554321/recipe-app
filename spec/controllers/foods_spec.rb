@@ -5,7 +5,7 @@ RSpec.describe FoodsController, type: :controller do
     context 'when user is authenticated' do
       before do
         @user = User.create(name: 'Test user', email: 'test444@gmail.com',
-          password: '123456', password_confirmation: '123456')
+                            password: '123456', password_confirmation: '123456')
         sign_in @user
         get :index
       end
@@ -36,7 +36,7 @@ RSpec.describe FoodsController, type: :controller do
     context 'when user is authenticated' do
       before do
         @user = User.create(name: 'Test user', email: 'test444@gmail.com',
-          password: '123456', password_confirmation: '123456')
+                            password: '123456', password_confirmation: '123456')
         sign_in @user
       end
 
@@ -46,9 +46,9 @@ RSpec.describe FoodsController, type: :controller do
         end
 
         it 'creates a new food' do
-          expect {
+          expect do
             post :create, params: valid_params
-          }.to change(Food, :count).by(1)
+          end.to change(Food, :count).by(1)
         end
 
         it 'redirects to the foods index' do
@@ -75,15 +75,15 @@ RSpec.describe FoodsController, type: :controller do
     context 'when user is authenticated' do
       before do
         @user = User.create(name: 'Test user', email: 'test444@gmail.com',
-          password: '123456', password_confirmation: '123456')
+                            password: '123456', password_confirmation: '123456')
         sign_in @user
         @food = Food.create(name: 'Test food', measurement_unit: 'pce', price: 12.2, quantity: 4, user: @user)
       end
 
       it 'destroys the food' do
-        expect {
+        expect do
           delete :destroy, params: { id: @food.id }
-        }.to change(Food, :count).by(-1)
+        end.to change(Food, :count).by(-1)
       end
 
       it 'redirects to the foods index' do
